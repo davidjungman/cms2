@@ -1,0 +1,65 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block body %}
+    <h3>
+        {{ component.getName() }}
+        {% if component.isRequired() %}
+                <span class="badge badge-warning font-weight-light">
+                    {{ 'required'|trans }}
+                </span>
+            {% elseif component.isEnabled() %}
+                <span class="badge badge-success font-weight-light">
+                    {{ 'actived'|trans }}
+                </span>
+            {% elseif component.isDisabled() and component.canBeEnabled() %}
+                <span class="badge badge-danger font-weight-light">
+                    {{ 'deactivated'|trans }}
+                </span>
+            {% else %}
+                <span class="badge badge-danger font-weight-light">
+                    {{ 'not_bought'|trans }}
+                </span>
+        {% endif %}
+    </h3>
+
+
+    <div class="card">
+        <div class="card-header">
+            {{ 'component.preview'|trans }}
+        </div>
+        <div class="card-body">
+            {{ component.getDescription() }}
+        </div>
+        <div class="card-footer">
+            <div class="float-left">
+                {{ 'component.activation.footer'|trans }}
+            </div>
+            {{ form_start(form, { "attr": { "id": "component_form" } }) }}
+                {% if component.isDisabled() %}
+                    <label class="switch switch-pill switch-warning float-right">
+                        {{ form_widget(form.switch, { "attr": {"class": "switch-input"} }) }}
+                        <span class="switch-slider"></span>
+                    </label>
+                    {% elseif component.isRequired() %}
+                        <label class="switch switch-pill switch-warning float-right">
+                            {{ form_widget(form.switch, { "checked": true, "attr": {"class": "switch-input"} }) }}
+                            <span class="switch-slider"></span>
+                        </label>
+                    {% elseif component.isEnabled() %}
+                        <label class="switch switch-pill switch-success float-right">
+                            {{ form_widget(form.switch, { "checked": true, "attr": {"class": "switch-input"} }) }}
+                            <span class="switch-slider"></span>
+                        </label>
+                {% endif %}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $("#component_switch_switch").on("change", () => {
+            $("#component_form").submit();
+        });
+    </script>
+{% endblock %}

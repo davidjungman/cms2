@@ -1,0 +1,180 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card">
+                <div class="card-header">
+                    {{ 'nav.settings'|trans }}
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+
+                        <h4>Firemní údaje</h4>
+                        <div class="form-row">
+                            <div class="col col-xl-8">
+                                <div class="form-group">
+                                    <label for="settings_companyName">{{ 'label.companyName'|trans }}</label>
+                                    {{ form_widget(form.companyName, { "attr": { "class": "form-control" }} ) }}
+                                </div>
+                            </div>
+                            <div class="col col-xl-4">
+                                <div class="form-group">
+                                    <label for="settings_version">{{ 'label.system_version'|trans }}</label>
+                                    {{ form_widget(form.version, { "attr": { "class": "form-control", "readonly": true }} ) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="settings_identificationNumber">{{ 'label.identificationNumber'|trans }}</label>
+                                    {{ form_widget(form.identificationNumber, { "attr": { "class": "form-control" }} ) }}
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="settings_dataBox">{{ 'label.dataBox'|trans }}</label>
+                                    {{ form_widget(form.dataBox, { "attr": { "class": "form-control" }} ) }}
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <h4 class="mt-4">Kontaktní údaje</h4>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="settings_contactTelephone">{{ 'label.contactTelephone'|trans }}</label>
+                                    {{ form_widget(form.contactTelephone, { "attr": { "class": "form-control" }} ) }}
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="settings_contactEmail">{{ 'label.contactEmail'|trans }}</label>
+                                    {{ form_widget(form.contactEmail, { "attr": { "class": "form-control" }} ) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-4">Adresa</h4>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="settings_addressCity">{{ 'label.addressCity'|trans }}</label>
+                                    {{ form_widget(form.addressCity, { "attr": { "class": "form-control" }} ) }}
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="settings_addressStreet">{{ 'label.addressStreet'|trans }}</label>
+                                    {{ form_widget(form.addressStreet, { "attr": { "class": "form-control" }} ) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="settings_addressHouseNumber">{{ 'label.addressHouseNumber'|trans }}</label>
+                                    {{ form_widget(form.addressHouseNumber, { "attr": { "class": "form-control" }} ) }}
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="settings_zipCode">{{ 'label.zipCode'|trans }}</label>
+                                    {{ form_widget(form.zipCode, { "attr": { "class": "form-control" }} ) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="settings_addressState">{{ 'label.addressState'|trans }}</label>
+                            {{ form_widget(form.addressState, { "attr": { "class": "form-control" }} ) }}
+                        </div>
+
+                        {{ form_widget(form.submit, { "attr": { "class": "btn btn-success float-right"}}) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    {{ 'nav.components'|trans }}
+                </div>
+                <div class="card-body">
+                    <table class="table table-responsive-sm table-striped">
+                        <thead>
+                        <tr>
+                            <th>{{ 'name_of_component'|trans }}</th>
+                            <th>{{ 'estimated_price'|trans }}</th>
+                            <th>{{ 'version'|trans }}</th>
+                            <th>{{ 'activation_date'|trans }}</th>
+                            <th>{{ 'status'|trans }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for component in components %}
+                            <tr class="row_link" data-href="{{ path("component_view", {"id": component.getId() }) }}">
+                                <td>{{ component.getName() }}</td>
+                                <td>{{ component.getAveragePrice() }},-</td>
+                                <td>{{ component.getVersion() }}</td>
+                                <td>
+                                    {% if component.isEnabled() %}
+                                        {{ component.getEnabledAt()|date("d.m.Y") }}
+                                        {% elseif component.isRequired() %}
+                                            <span class="badge badge-warning">
+                                                {{ 'soon_active'|trans }}
+                                            </span>
+                                        {% elseif component.isDisabled() and component.canBeEnabled() %}
+                                            <span class="badge badge-danger">
+                                                {{ 'component_is_not_active'|trans }}
+                                            </span>
+                                        {% else %}
+                                            <span class="badge badge-danger">
+                                                {{ 'not_bought'|trans }}
+                                            </span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if component.isEnabled() %}
+                                        <span class="badge badge-success">
+                                            {{ 'active'|trans }}
+                                        </span>
+                                    {% elseif component.isRequired() %}
+                                        <span class="badge badge-warning">
+                                            {{ 'is_applied_for'|trans }}
+                                        </span>
+                                    {% elseif component.isDisabled() and component.canBeEnabled() %}
+                                        <span class="badge badge-danger">
+                                            {{ 'disabled'|trans }}
+                                        </span>
+                                    {% else  %}
+                                        <span class="badge badge-danger">
+                                            {{ 'not_bought'|trans }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% include 'Admin/Asset/pagination.html.twig' %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-success">
+                <div class="card-body pb-0">
+                    <button class="btn btn-transparent p-0 float-right" type="button">
+                        <i class="fa fa-puzzle-piece"></i>
+                    </button>
+                    <div class="text-value">{{ totalEnabledComponents }} / {{ totalComponents }}</div>
+                    <div>
+                        {{ 'widget.amount_of_enabled_components'|trans }}
+                    </div>
+                </div>
+                <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                    <canvas class="chart" id="card-chart2" height="70"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

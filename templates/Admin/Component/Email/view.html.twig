@@ -1,0 +1,92 @@
+{% extends 'Admin/base.html.twig' %}
+
+{% block body %}
+
+    <div class="card col-md-7">
+        <div class="card-body">
+            <h3>
+                Detail emailu #{{ email.getId() }}
+                {% if email.getActive == 0 %}
+                    <span class="badge badge-success float-right">
+                        {{ 'read_past'|trans }}
+                    </span>
+                    {% else %}
+                        <span class="badge badge-danger float-right">
+                            {{ 'new'|trans }}
+                        </span>
+                {% endif %}
+            </h3>
+            <div class="col-md-12 mb-md-0 mb-5">
+                <form id="contact-form" name="contact-form" action="{{ app.request.uri }}" method="POST">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                {{ form_widget(form.name, {"attr": {"class": "form-control", "readonly": true, }} ) }}
+                                <label for="email_name" class="">{{ 'label.name'|trans }}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                {{ form_widget(form.clientEmail, {"attr": {"class": "form-control", "readonly": true }} ) }}
+                                <label for="email_clientEmail" class="">{{ 'label.email'|trans }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="md-form mb-0">
+                                {{ form_widget(form.subject, {"attr": {"class": "form-control", "readonly": true }} ) }}
+                                <label for="email_subject" class="">{{ 'label.subject'|trans }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="md-form">
+                                {{ form_widget(form.message, {"attr": {"class": "form-control md-textarea", "readonly": true} }) }}
+                                <label for="email_message">{{ 'label.message'|trans }}</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        <div id="copyEmailAddress"
+                             class="btn btn-info"
+                             data-toggle="popover"
+                             data-content="Emailová adresa zkopírována!">
+                            Kopírovat emailovou adresu
+                        </div>
+                        {{ form_widget(form.setAsRead, {"attr": {"class": "btn btn-warning" }}) }}
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('node_modules/mdbootstrap/js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('node_modules/mdbootstrap/js/popper.min.js') }}"></script>
+    <script src="{{ asset('node_modules/mdbootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('node_modules/mdbootstrap/js/mdb.min.js') }}"></script>
+    <script>
+        $("#copyEmailAddress").click((event) => {
+            event.stopPropagation();
+            const email = $("#email_clientEmail").select();
+            document.execCommand("copy");
+        });
+
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
+
+    </script>
+{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('node_modules/mdbootstrap/css/mdb.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/mdbootstrap/css/style.min.css') }}" rel="stylesheet">
+
+    <!-- font-awesome -->
+    <link href="{{ asset("node_modules/font-awesome/css/font-awesome.min.css") }}" rel="stylesheet">
+{% endblock %}

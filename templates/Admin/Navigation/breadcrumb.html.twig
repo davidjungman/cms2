@@ -1,0 +1,11 @@
+{% for item in breadcrumb %}
+    {% if loop.last != true %}
+        <li class="breadcrumb-item">
+            <a href="{{ path(item.path) }}">{{ item.value }}</a>
+        </li>
+        {% else %}
+            <li class="breadcrumb-item">
+                {{ item.value }}
+            </li>
+    {% endif %}
+{% endfor %}

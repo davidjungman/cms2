@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link rel="shortcut icon" href="{{ asset("img/favicon.ico") }}" type="image/x-icon">
+
+        <!-- font-awesome -->
+        <link href="{{ asset("node_modules/font-awesome/css/font-awesome.min.css") }}" rel="stylesheet">
+
+        <!-- fonts & icons-->
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <link href="{{ asset('node_modules/@coreui/icons/css/coreui-icons.css') }}" rel="stylesheet">
+        <link href="{{ asset('node_modules/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('node_modules/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
+
+        <!-- jquery ui -->
+        <link href="{{ asset('node_modules/jquery-ui-dist/jquery-ui.min.css') }}" rel="stylesheet">
+
+        <link href="{{ asset('css/pace.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/style.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        {% block stylesheets %}{% endblock %}
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+        <script>
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag('js', new Date());
+                // Shared ID
+                gtag('config', 'UA-118965717-3');
+                // Bootstrap ID
+                gtag('config', 'UA-118965717-5');
+            </script>
+    </head>
+    <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+
+        <header class="app-header navbar">
+            {% include "Admin/Navigation/header.html.twig" %}
+        </header>
+        {% block modals %}{% endblock %}
+        <div class="app-body">
+            {% include "Admin/Navigation/sidebar.html.twig" %}
+            <main class="main">
+                <ol class="breadcrumb">
+                        {% include "Admin/Navigation/breadcrumb.html.twig" %}
+
+                        <li class="breadcrumb-menu d-md-down-none">
+                            <div class="btn-group" role="group" aria-label="Button group">
+                                <a class="btn" href="{{ path("dashboard_index") }}">
+                                    <i class="icon-graph"></i>  Dashboard</a>
+                                <a class="btn" href="{{ path("settings_index") }}">
+                                    <i class="icon-settings"></i>  Settings</a>
+                            </div>
+                        </li>
+                    </ol>
+                <div class="container-fluid">
+                    <div class="animated fadeIn">
+                        {% block body %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+            </main>
+        </div>
+        <footer class="app-footer">
+            <div>
+                <a href="https://www.execom.cz/">EXE-COM</a>
+                <span>&copy; 2019 | David Jungman</span>
+            </div>
+            <div class="ml-auto">
+            <span>Powered by</span>
+            <a href="https://www.execom.cz">HIME</a>
+        </div>
+        </footer>
+
+        <script src="{{ asset('node_modules/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('node_modules/popper.js/dist/umd/popper.min.js') }}"></script>
+        <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('node_modules/pace-progress/pace.min.js') }}"></script>
+        <script src="{{ asset('node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}"></script>
+        <script src="{{ asset('node_modules/chart.js/dist/Chart.min.js') }}"></script>
+        <script src="{{ asset('node_modules/@coreui/coreui/dist/js/coreui.min.js') }}"></script>
+        <script src="{{ asset('node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js') }}"></script>
+        <script src="{{ asset('node_modules/moment/min/moment.min.js') }}"></script>
+        <script src="{{ asset('node_modules/jquery-ui-dist/jquery-ui.min.js') }}"></script>
+
+        <script src="{{ asset('js/prototypes.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+
+        <script>
+            $(".js-datepicker").datepicker();
+        </script>
+
+        <script>
+            jQuery(document).ready(function($) {
+                $(".row_link").click(function() {
+                    window.location = $(this).data("href");
+                });
+            });
+        </script>
+    </body>
+</html>

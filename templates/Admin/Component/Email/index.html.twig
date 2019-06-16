@@ -1,0 +1,63 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> {{ 'table.list_of_emails'|trans }}</div>
+                <div class="card-body">
+                    <table class="table table-responsive-sm table-striped">
+                        <thead>
+                        <tr>
+                            <th>{{ 'name'|trans }}</th>
+                            <th>{{ 'email_address'|trans }}</th>
+                            <th>{{ 'subject'|trans }}</th>
+                            <th>{{ 'sent_on'|trans }}</th>
+                            <th>{{ 'status'|trans }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for email in emails %}
+                                <tr class="row_link" data-href="{{ path("email_view", {"id": email.getId() }) }}">
+                                    <td>{{ email.getName() }}</td>
+                                    <td>{{ email.getClientEmail() }}</td>
+                                    <td>{{ email.getSubject() }}</td>
+                                    <td>{{ email.getCreatedAt()|date("m.d.Y", "Europe/London") }}</td>
+                                    <td>
+                                        {% if email.getActive() == 1 %}
+                                            <span class="badge badge-danger">
+                                                {{ 'new'|trans }}
+                                            </span>
+                                        {% else %}
+                                            <span class="badge badge-success">
+                                                {{ 'read_past'|trans }}
+                                            </span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% include "Admin/Asset/pagination.html.twig" %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-success">
+                <div class="card-body pb-0">
+                    <button class="btn btn-transparent p-0 float-right" type="button">
+                        <i class="fa fa-puzzle-piece"></i>
+                    </button>
+                    <div class="text-value">{{ unread_emails }}</div>
+                    <div>
+                        {{ 'widget.amount_of_new_emails'|trans }}
+                    </div>
+                </div>
+                <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                    <canvas class="chart" id="card-chart2" height="70"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

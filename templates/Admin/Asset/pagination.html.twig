@@ -1,0 +1,29 @@
+{% if maxPages > 1 %}
+    {% set current_path = app.request.get('_route') %}
+
+    <ul class="pagination">
+        <li class="page-item {{ thisPage == 1 ? "disabled" }}">
+            <a class="page-link" href="{{ path(current_path, {page: thisPage-1 < 1 ? 1 : thisPage-1 }) }}">
+                {{ 'prev'|trans }}
+            </a>
+        </li>
+
+        {% for item in 1..maxPages %}
+
+            {% if item == thisPage %}
+                <li class="page-item active">
+                {% else %}
+                    <li class="page-item">
+            {% endif %}
+
+                <a class="page-link" href="{{ path(current_path, {'page': item} ) }}">{{ item }}</a>
+            </li>
+        {% endfor %}
+
+        <li class="page-item {{ thisPage == maxPages ? "disabled" }}">
+            <a class="page-link" href="{{ path(current_path, {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage }) }}">
+                {{ 'next'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endif %}

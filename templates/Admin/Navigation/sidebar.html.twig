@@ -1,0 +1,32 @@
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path("dashboard_index") }}">
+                    <i class="nav-icon icon-speedometer"></i> {{ 'nav.dashboard'|trans }}
+                </a>
+            </li>
+            <li class="nav-title">{{ 'nav.system'|trans }}</li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path("settings_index") }}">
+                    <i class="nav-icon fa fa-cogs"></i>
+                    {{ 'nav.settings'|trans }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="nav-icon fa fa-cart-plus"></i>
+                    {{ 'nav.system_upgrade'|trans }}
+                </a>
+            </li>
+
+            {% if enabledComponents is not empty %}
+                <li class="nav-title">{{ 'nav.components'|trans }}</li>
+                {% for component in enabledComponents %}
+                    {% include 'Admin/Navigation/Components/' ~ component.getComponentName() ~'.html.twig' %}
+                {% endfor %}
+            {% endif %}
+
+        </ul>
+    </nav>
+</div>

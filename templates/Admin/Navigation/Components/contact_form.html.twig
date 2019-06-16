@@ -1,0 +1,14 @@
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#">
+        <i class="nav-icon fa fa-envelope-o"></i>
+        {{ 'nav.contact_form'|trans }}
+    </a>
+    <ul class="nav-dropdown-items">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('email_index') }}">
+                <i class="nav-icon fa fa-list"></i>
+                {{ 'nav.contact_form.list'|trans }}
+            </a>
+        </li>
+    </ul>
+</li>

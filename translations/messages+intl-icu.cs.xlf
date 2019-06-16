@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file original="file.ext" source-language="en" datatype="plaintext" target-language="cs">
+        <body>
+            <trans-unit id="system.update.successful">
+                <source>system.update.successful</source>
+                <target>Změna nastavení systému problěha úspěšně.</target>
+            </trans-unit>
+
+            <trans-unit id="title.contact_us">
+                <source>title.contact_us</source>
+                <target>Kontaktujte Nás</target>
+            </trans-unit>
+
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>Vaše jméno</target>
+            </trans-unit>
+            <trans-unit id="label.email">
+                <source>label.email</source>
+                <target>Váš email</target>
+            </trans-unit>
+            <trans-unit id="label.subject">
+                <source>label.subject</source>
+                <target>Předmět</target>
+            </trans-unit>
+            <trans-unit id="label.message">
+                <source>label.message</source>
+                <target>Vaše zpráva</target>
+            </trans-unit>
+            <trans-unit id="label.companyName">
+                <source>label.companyName</source>
+                <target>Název firmy</target>
+            </trans-unit>
+            <trans-unit id="label.system_version">
+                <source>label.system_version</source>
+                <target>Verze systému</target>
+            </trans-unit>
+            <trans-unit id="label.identificationNumber">
+                <source>label.identificationNumber</source>
+                <target>Identifikační číslo ( IČ )</target>
+            </trans-unit>
+            <trans-unit id="label.dataBox">
+                <source>label.dataBox</source>
+                <target>Datová schránka</target>
+            </trans-unit>
+            <trans-unit id="label.contactTelephone">
+                <source>label.contactTelephone</source>
+                <target>Kontaktní telefon</target>
+            </trans-unit>
+            <trans-unit id="label.contactEmail">
+                <source>label.contactEmail</source>
+                <target>Kontaktní email</target>
+            </trans-unit>
+            <trans-unit id="label.addressCity">
+                <source>label.addressCity</source>
+                <target>Město / Vesnice</target>
+            </trans-unit>
+            <trans-unit id="label.addressStreet">
+                <source>label.addressStreet</source>
+                <target>Ulice</target>
+            </trans-unit>
+            <trans-unit id="label.addressHouseNumber">
+                <source>label.addressHouseNumber</source>
+                <target>Číslo popisné</target>
+            </trans-unit>
+            <trans-unit id="label.addressState">
+                <source>label.addressState</source>
+                <target>Stát</target>
+            </trans-unit>
+            <trans-unit id="label.zipCode">
+                <source>label.zipCode</source>
+                <target>Poštovní směrovací číslo ( PSČ )</target>
+            </trans-unit>
+            <trans-unit id="label.event.all_day">
+                <source>label.event.all_day</source>
+                <target>Celodenní událost</target>
+            </trans-unit>
+            <trans-unit id="label.event.new">
+                <source>label.event.new</source>
+                <target>Nová událost</target>
+            </trans-unit>
+            <trans-unit id="label.event.title">
+                <source>label.event.title</source>
+                <target>Název události</target>
+            </trans-unit>
+            <trans-unit id="label.event.description">
+                <source>label.event.description</source>
+                <target>Popisek události</target>
+            </trans-unit>
+            <trans-unit id="label.event.start">
+                <source>label.event.start</source>
+                <target>Počáteční datum události</target>
+            </trans-unit>
+            <trans-unit id="label.event.end">
+                <source>label.event.end</source>
+                <target>Konečné datum události</target>
+            </trans-unit>
+            <trans-unit id="label.event.color">
+                <source>label.event.color</source>
+                <target>Barva události</target>
+            </trans-unit>
+
+            <trans-unit id="submit.send">
+                <source>submit.send</source>
+                <target>Odeslat</target>
+            </trans-unit>
+            <trans-unit id="submit.save_changes">
+                <source>submit.save_changes</source>
+                <target>Uložit změny</target>
+            </trans-unit>
+
+            <trans-unit id="post.send_successfully">
+                <source>post.send_successfully</source>
+                <target>Email byl odeslán úspěšně!</target>
+            </trans-unit>
+
+            <trans-unit id="nav.dashboard">
+                <source>nav.dashboard</source>
+                <target>Nástěnka</target>
+            </trans-unit>
+            <trans-unit id="nav.components">
+                <source>nav.components</source>
+                <target>Komponenty</target>
+            </trans-unit>
+            <trans-unit id="nav.website_editing">
+                <source>nav.website_editing</source>
+                <target>Úpravy webu</target>
+            </trans-unit>
+
+            <trans-unit id="nav.users">
+                <source>nav.users</source>
+                <target>Uživatelé</target>
+            </trans-unit>
+            <trans-unit id="nav.settings">
+                <source>nav.settings</source>
+                <target>Nastavení</target>
+            </trans-unit>
+            <trans-unit id="nav.system">
+                <source>nav.system</source>
+                <target>Systém</target>
+            </trans-unit>
+            <trans-unit id="nav.system_upgrade">
+                <source>nav.system_upgrade</source>
+                <target>Rozšíření systému</target>
+            </trans-unit>
+            <trans-unit id="nav.contact_form">
+                <source>nav.contact_form</source>
+                <target>Kontaktní formulář</target>
+            </trans-unit>
+            <trans-unit id="nav.contact_form.list">
+                    <source>nav.contact_form.list</source>
+                    <target>Seznam emailů</target>
+                </trans-unit>
+            <trans-unit id="nav.gallery">
+                <source>nav.gallery</source>
+                <target>Fotogalerie</target>
+            </trans-unit>
+            <trans-unit id="nav.texts">
+                <source>nav.texts</source>
+                <target>Texty</target>
+            </trans-unit>
+            <trans-unit id="nav.texts.list">
+                    <source>nav.texts.list</source>
+                    <target>Seznam textů</target>
+                </trans-unit>
+            <trans-unit id="nav.navigation">
+                <source>nav.navigation</source>
+                <target>Navigace</target>
+            </trans-unit>
+            <trans-unit id="account.logout">
+                <source>account.logout</source>
+                <target>Odhlásit se</target>
+            </trans-unit>
+            <trans-unit id="nav.event_calendar">
+                <source>nav.event_calendar</source>
+                <target>Kalendář událostí</target>
+            </trans-unit>
+
+            <trans-unit id="widget.amount_of_new_emails">
+                <source>widget.amount_of_new_emails</source>
+                <target>Celkový počet nových emailů</target>
+            </trans-unit>
+            <trans-unit id="widget.amount_of_components">
+                <source>widget.amount_of_components</source>
+                <target>Počet komponent</target>
+            </trans-unit>
+            <trans-unit id="widget.amount_of_enabled_components">
+                <source>widget.amount_of_enabled_components</source>
+                <target>Počet aktivovaných komponent</target>
+            </trans-unit>
+
+            <trans-unit id="table.list_of_emails">
+                <source>table.list_of_emails</source>
+                <target>Seznam emailů</target>
+            </trans-unit>
+
+            <trans-unit id="name">
+                <source>name</source>
+                <target>Jméno</target>
+            </trans-unit>
+            <trans-unit id="email_address">
+                <source>email_address</source>
+                <target>Emailová adresa</target>
+            </trans-unit>
+            <trans-unit id="subject">
+                <source>subject</source>
+                <target>Předmět</target>
+            </trans-unit>
+            <trans-unit id="sent_on">
+                <source>sent_on</source>
+                <target>Odesláno dne</target>
+            </trans-unit>
+            <trans-unit id="status">
+                <source>status</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="active">
+                <source>active</source>
+                <target>Aktivní</target>
+            </trans-unit>
+            <trans-unit id="read_past">
+                <source>read_past</source>
+                <target>Přečteno</target>
+            </trans-unit>
+            <trans-unit id="set as read">
+                <source>set as read</source>
+                <target>Označit jako přečtené</target>
+            </trans-unit>
+            <trans-unit id="set as read and response">
+                <source>set as read and response</source>
+                <target>Označit jako přečtené a odpovědět</target>
+            </trans-unit>
+            <trans-unit id="new">
+                <source>new</source>
+                <target>Novinka</target>
+            </trans-unit>
+            <trans-unit id="answered">
+                <source>answered</source>
+                <target>Odpovězeno</target>
+            </trans-unit>
+            <trans-unit id="prev">
+                <source>prev</source>
+                <target>Předchozí</target>
+            </trans-unit>
+            <trans-unit id="next">
+                <source>next</source>
+                <target>Další</target>
+            </trans-unit>
+            <trans-unit id="name_of_component">
+                <source>name_of_component</source>
+                <target>Název komponenty</target>
+            </trans-unit>
+            <trans-unit id="version">
+                <source>version</source>
+                <target>Verze</target>
+            </trans-unit>
+            <trans-unit id="estimated_price">
+                <source>estimated_price</source>
+                <target>Odhadovaná cena</target>
+            </trans-unit>
+            <trans-unit id="activation_date">
+                <source>activation_date</source>
+                <target>Datum aktivace</target>
+            </trans-unit>
+            <trans-unit id="disabled">
+                <source>disabled</source>
+                <target>Deaktivováno</target>
+            </trans-unit>
+            <trans-unit id="component_is_not_active">
+                <source>component_is_not_active</source>
+                <target>Komponenta není aktivní</target>
+            </trans-unit>
+            <trans-unit id="component_is_not_bought">
+                <source>component_is_not_bought</source>
+                <target>Komponenta není zakoupena</target>
+            </trans-unit>
+            <trans-unit id="not_bought">
+                <source>not_bought</source>
+                <target>Nezakoupeno</target>
+            </trans-unit>
+            <trans-unit id="is_applied_for">
+                <source>is_applied_for</source>
+                <target>Již zažádáno</target>
+            </trans-unit>
+            <trans-unit id="soon_active">
+                <source>soon_active</source>
+                <target>Brzy aktivní</target>
+            </trans-unit>
+            <trans-unit id="component.activation.footer">
+                <source>component.activation.footer</source>
+                <target>
+                    Pokud si přejete aktivovat tuto komponentu,
+                    můžete o ní zažádat správce.Ten Vás do 24 hodin kontaktuje
+                    či rovnou aktivuje komponentu na
+                    základě Vaší domluvy o poskytování
+                    redakčního systému HIME.
+                </target>
+            </trans-unit>
+            <trans-unit id="component.preview">
+                <source>component.preview</source>
+                <target>Náhled komponenty</target>
+            </trans-unit>
+            <trans-unit id="required">
+                <source>required</source>
+                <target>Vyžádáno</target>
+            </trans-unit>
+            <trans-unit id="actived">
+                <source>actived</source>
+                <target>Aktivováno</target>
+            </trans-unit>
+            <trans-unit id="deactivated">
+                <source>deactivated</source>
+                <target>Deaktivováno</target>
+            </trans-unit>
+            <trans-unit id="red">
+                <source>red</source>
+                <target>Červená</target>
+            </trans-unit>
+            <trans-unit id="green">
+                <source>green</source>
+                <target>Zelená</target>
+            </trans-unit>
+            <trans-unit id="orange">
+                <source>orange</source>
+                <target>Oranžová</target>
+            </trans-unit>
+            <trans-unit id="blue">
+                <source>blue</source>
+                <target>Modrá</target>
+            </trans-unit>
+            <trans-unit id="saveAndPublish">
+                <source>saveAndPublish</source>
+                <target>Uložit a publikovat</target>
+            </trans-unit>
+            <trans-unit id="close">
+                <source>close</source>
+                <target>Zavřít</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

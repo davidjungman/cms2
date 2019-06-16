@@ -1,0 +1,24 @@
+$primary: #20a8d8;
+$secondary: #c8ced3;
+
+$light: #f0f3f5;
+$dark: #2f353a;
+
+$success: #4dbd74;
+$danger: #f86c6b;
+$warning: #ffc107;
+$info: #63c2de;
+
+.row_link
+{
+  cursor:pointer;
+}
+.row_link:hover
+{
+  background: $secondary !important;
+}
+
+*
+{
+  font-family:"Roboto", sans-serif;
+}

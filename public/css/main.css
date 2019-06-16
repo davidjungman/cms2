@@ -1,0 +1,13 @@
+.row_link {
+  cursor: pointer;
+}
+
+.row_link:hover {
+  background: #c8ced3 !important;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -17,10 +17,23 @@
                 </div>
             </div>
         </a>
-
     {% else %}
-        {% for key, value in settings|cast_to_array %}
-
-        {% endfor %}
+        {% if settings.getIdentificationNumber() is empty %}
+            <a href="{{ path("settings_index") }}">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card text-white bg-danger">
+                        <div class="card-body pb-0">
+                            <button class="btn btn-transparent p-0 float-right" type="button">
+                                <i class="fa fa-exclamation-circle"></i>
+                            </button>
+                            <div class="text-value">{{ 'no.identification.number'|trans }}</div>
+                        </div>
+                        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                            <canvas class="chart" id="card-chart2" height="70"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endif %}
     {% endif %}
 {% endblock %}

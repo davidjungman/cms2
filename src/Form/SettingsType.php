@@ -21,18 +21,19 @@ class SettingsType extends AbstractType
     {
         $builder
             ->add("companyName", TextType::class)
-            ->add("identificationNumber", TextType::class)
+            ->add("identificationNumber", TextType::class, array("required" => false))
             ->add("dataBox", TextType::class, array("required" => false))
 
-            ->add("contactTelephone", TelType::class)
-            ->add("contactEmail", \Symfony\Component\Form\Extension\Core\Type\EmailType::class)
+            ->add("contactTelephone", TelType::class, array("required" => false))
+            ->add("contactEmail", \Symfony\Component\Form\Extension\Core\Type\EmailType::class, array("required" => false))
 
-            ->add("addressCity", TextType::class)
-            ->add("addressStreet", TextType::class)
+            ->add("addressCity", TextType::class, array("required" => false))
+            ->add("addressStreet", TextType::class, array("required" => false))
             ->add("addressHouseNumber", TextType::class, array("required" => false))
-            ->add("zipCode", TextType::class)
+            ->add("zipCode", TextType::class, array("required" => false))
             ->add("addressState", CountryType::class, array(
-              "preferred_choices" => array("CZ", "SK")
+              "preferred_choices" => array("CZ", "SK"),
+              "required" => "false"
             ))
 
             ->add("version", TextType::class, array(

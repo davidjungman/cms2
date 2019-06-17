@@ -532,6 +532,10 @@
                 <source>no.settings</source>
                 <target>Nebylo nalezeno žádné konfigurované nastavení!</target>
             </trans-unit>
+            <trans-unit id="no.identification.number">
+                <source>no.identification.number</source>
+                <target>Nebylo nalezeno žádné identifikační číslo ( IČ ) !</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

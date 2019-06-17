@@ -14,20 +14,11 @@ use Twig\TwigFilter;
 class AppExtension extends AbstractExtension
 {
 
-    public function getfilters()
+    public function getFilters()
     {
         return [
           new TwigFilter('cast_to_array', [$this, 'castToArray']),
         ];
     }
 
-    public function castToArray($object)
-    {
-        $response = [];
-        foreach($object as $key => $value)
-        {
-            $response[] = array($key,$value);
-        }
-        return $response;
-    }
 }

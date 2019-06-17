@@ -69,7 +69,7 @@ final class EmailController extends BaseComponent
 
         $unread_emails = $repository->countActiveEmails();
 
-        $breadcrumb->addItem("Seznam emailů", "email_index");
+        $breadcrumb->addItem("nav.email.list", "email_index");
 
         return $this->render("Admin/Component/Email/index.html.twig", array(
           "emails" => $emails,
@@ -114,7 +114,7 @@ final class EmailController extends BaseComponent
             }
         }
 
-        $breadcrumb->addItem("Detail emailu", "email_view");
+        $breadcrumb->addItem("email.detail", "email_view");
 
         return $this->render("Admin/Component/Email/view.html.twig", array(
             "form" => $form->createView(),

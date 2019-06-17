@@ -31,6 +31,6 @@ class BaseComponent extends AbstractController
         {
             throw new NotFoundHttpException("Page not found");
         }
-        return $breadcrumb->addItem("Komponenta", "settings_index");
+        return $breadcrumb->addItem("component", "settings_index");
     }
 }

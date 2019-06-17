@@ -89,7 +89,7 @@ final class SettingsController extends AbstractController
           "form" => $form->createView(),
           "maxPages" => $maxPages,
           "thisPage" => $page,
-          "breadcrumb" => $breadcrumb->addItem("Nastavení", "settings_index")->createView()
+          "breadcrumb" => $breadcrumb->addItem("nav.settings", "settings_index")->createView()
         ));
     }
 }

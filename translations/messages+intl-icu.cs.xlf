@@ -416,6 +416,18 @@
                 <source>no_emails</source>
                 <target>Žádné emaily zatím nedorazili</target>
             </trans-unit>
+            <trans-unit id="component">
+                <source>component</source>
+                <target>Komponenta</target>
+            </trans-unit>
+            <trans-unit id="nav.email.list">
+                <source>nav.email.list</source>
+                <target>Seznam emailů</target>
+            </trans-unit>
+            <trans-unit id="email.detail">
+                <source>email.detail</source>
+                <target>Detail emailu</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

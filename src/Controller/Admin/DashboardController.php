@@ -29,7 +29,7 @@ final class DashboardController extends AbstractController
      */
     public function index(Breadcrumb $breadcrumb): Response
     {
-        $breadcrumb->addItem("Nástěnka", "dashboard_index");
+        $breadcrumb->addItem("nav.dashboard", "dashboard_index");
         return $this->render("Admin/Dashboard/index.html.twig", array(
           "breadcrumb" => $breadcrumb->createView()
         ));

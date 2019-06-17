@@ -51,10 +51,18 @@ final class ComponentController extends AbstractController
     {
         $breadcrumb->addItem('nav.component.manager', "component_index");
 
+        $components = $this->componentRepository->findAllByPage($page);
+
+        $maxPages = ceil($components->count() / COMPONENT::ITEMS_PER_PAGE);
+
+        $orderedComponents = $this->componentRepository->findBy(["isRequired" => true]);
+
         return $this->render('Admin/Component/index.html.twig', array(
             "breadcrumb" => $breadcrumb->createView(),
-            "components" => $this->componentRepository->findAllByPage($page),
-            "orderedComponents" => $this->componentRepository->findBy(["isRequired" => true])
+            "components" => $components,
+            "orderedComponents" => $orderedComponents,
+            "maxPages" => $maxPages,
+            "thisPage" => $page
         ));
     }
 

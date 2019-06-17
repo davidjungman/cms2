@@ -10,4 +10,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+a, a:hover
+{
+  text-decoration:none !important;
+  text-underline: none !important;
+}
+
 /*# sourceMappingURL=main.css.map */

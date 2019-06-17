@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\SettingsRepository;
 use App\Service\Breadcrumb;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,11 +28,14 @@ final class DashboardController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(Breadcrumb $breadcrumb): Response
+    public function index(Breadcrumb $breadcrumb, SettingsRepository $settingsRepository): Response
     {
         $breadcrumb->addItem("nav.dashboard", "dashboard_index");
+
+
         return $this->render("Admin/Dashboard/index.html.twig", array(
-          "breadcrumb" => $breadcrumb->createView()
+          "breadcrumb" => $breadcrumb->createView(),
+          "settings" => $settingsRepository->find(1)
         ));
     }
 }

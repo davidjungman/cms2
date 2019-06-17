@@ -428,6 +428,22 @@
                 <source>email.detail</source>
                 <target>Detail emailu</target>
             </trans-unit>
+            <trans-unit id="sign_in">
+                <source>sign_in</source>
+                <target>Přihlásit se</target>
+            </trans-unit>
+            <trans-unit id="Email.address">
+                <source>Email.address</source>
+                <target>Emailová adresa</target>
+            </trans-unit>
+            <trans-unit id="Password">
+                <source>Password</source>
+                <target>Heslo</target>
+            </trans-unit>
+            <trans-unit id="Stay_logged_in">
+                <source>Stay_logged_in</source>
+                <target>Zůstat přihlášen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

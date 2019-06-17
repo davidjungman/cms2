@@ -60,6 +60,8 @@ final class SettingsController extends AbstractController
      */
     public function index(Request $request, int $page, Breadcrumb $breadcrumb)
     {
+
+
         $components = $this->componentRepository->findAllByPage($page);
         $settings = $this->settingsRepository->find(1);
 

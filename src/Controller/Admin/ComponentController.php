@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * ComponentController allows to manage Component Entities
@@ -42,6 +43,9 @@ final class ComponentController extends AbstractController
 
     /**
      * @Route("/{page<\d+>}", defaults={"page":1},name="component_index")
+     *
+     * @IsGranted("ROLE_ADMIN", message="This page is accessible only for administrators!")
+     *
      * @param  int  $page
      * @param  \App\Service\Breadcrumb  $breadcrumb
      *
@@ -70,6 +74,7 @@ final class ComponentController extends AbstractController
      * Detail on Component Entity
      *
      * @Route("/view/{id<\d+>}", name="component_view")
+     *
      * @param  \Symfony\Component\HttpFoundation\Request  $request
      * @param  \App\Entity\Component  $component
      *
@@ -120,6 +125,9 @@ final class ComponentController extends AbstractController
 
     /**
      * @Route("/new", name="component_new")
+     *
+     * @IsGranted("ROLE_ADMIN", message="This page is accessible only for administrators!")
+     *
      * @param  \Symfony\Component\HttpFoundation\Request  $request
      * @param  \App\Repository\SettingsRepository  $settingsRepository
      * @param  \App\Service\Breadcrumb  $breadcrumb
@@ -164,6 +172,9 @@ final class ComponentController extends AbstractController
 
     /**
      * @Route("/update/{component}", name="component_update")
+     *
+     * @IsGranted("ROLE_ADMIN", message="This page is accessible only for administrators!")
+     *
      * @param  \App\Entity\Component  $component
      * @param  \Symfony\Component\HttpFoundation\Request  $request
      *
@@ -211,6 +222,9 @@ final class ComponentController extends AbstractController
 
     /**
      * @Route("/enable/{component}", name="component_enable")
+     *
+     * @IsGranted("ROLE_ADMIN", message="This page is accessible only for administrators!")
+     *
      * @param  \App\Entity\Component  $component
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

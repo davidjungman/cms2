@@ -19,9 +19,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        <div class="contact-form col-6">
-            {{ include('Form/_contact_form.html.twig') }}
-        </div>
+        {% block body %}{% endblock %}
 
         <script src="{{ asset('node_modules/mdbootstrap/js/jquery-3.4.1.min.js') }}"></script>
         <script src="{{ asset('node_modules/mdbootstrap/js/popper.min.js') }}"></script>

@@ -1,0 +1,38 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'update.component'|trans }}
+        </div>
+        <div class="card-body">
+            {{ form_start(form) }}
+
+            <div class="form-group">
+                <label for="component_Name">{{ 'label.ComponentName'|trans }}</label>
+                {{ form_widget(form.name, { "attr": { "class": "form-control" }} ) }}
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="component_average_price">{{ 'label.average_price'|trans }}</label>
+                        {{ form_widget(form.average_price, { "attr": { "class": "form-control" }} ) }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="component_componentName">{{ 'label.tagComponent'|trans }}</label>
+                        {{ form_widget(form.componentName, { "attr": { "class": "form-control" }} ) }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="component_description">{{ 'label.description'|trans }}</label>
+                {{ form_widget(form.description, { "attr": { "class": "form-control" }} ) }}
+            </div>
+            {{ form_widget(form.update, { "attr": { "class": "btn btn-success float-right"}}) }}
+            {{ form_widget(form.delete, { "attr": { "class": "btn btn-danger float-right mr-1", "onclick": 'return confirm("Are you sure ?");'}}) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use App\Util\Maintainable;
 use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,7 +38,7 @@ class Component
     /**
      * @ORM\Column(type="integer")
      */
-    private $average_price;
+    private $averagePrice;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -77,6 +77,13 @@ class Component
      */
     private $createdAt;
 
+    public function __construct()
+    {
+        $this->setEnabled(false);
+        $this->setVersion("1.0.0");
+        $this->setIsRequired(false);
+    }
+
     public function getUpdatedAt():DateTime
     {
         return $this->updatedAt;
@@ -104,12 +111,12 @@ class Component
         return $this;
     }
 
-    public function getEnabledAt(): ?\DateTimeInterface
+    public function getEnabledAt(): ?DateTimeInterface
     {
         return $this->enabledAt;
     }
 
-    public function setEnabledAt(?\DateTimeInterface $enabledAt): self
+    public function setEnabledAt(?DateTimeInterface $enabledAt): self
     {
         $this->enabledAt = $enabledAt;
 
@@ -125,12 +132,12 @@ class Component
 
     public function getAveragePrice(): ?int
     {
-        return $this->average_price;
+        return $this->averagePrice;
     }
 
-    public function setAveragePrice(int $average_price): self
+    public function setAveragePrice(int $averagePrice): self
     {
-        $this->average_price = $average_price;
+        $this->averagePrice = $averagePrice;
 
         return $this;
     }

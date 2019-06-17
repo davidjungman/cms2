@@ -1,0 +1,78 @@
+{% extends 'Admin/base.html.twig' %}
+
+{% block body %}
+    <h3>
+        {{ 'nav.component.manager'|trans }}
+        <div class="float-right">
+            <a href="{{ path('component_new') }}">
+                <span class="badge badge-success">
+                    {{ 'register.new.component'|trans }}
+                </span>
+            </a>
+        </div>
+    </h3>
+
+    {% if orderedComponents is empty %}
+        <div class="alert alert-warning">{{ 'no_new_components_ordered'|trans }}</div>
+        {% else %}
+        <div class="card">
+                <div class="card-header">
+                    {{ 'order.overview'|trans }}
+                </div>
+                <div class="card-body">
+                    <table class="table table-responsive-sm table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{ 'name_of_component'|trans }}</th>
+                            <th>{{ 'version'|trans }}</th>
+                            <th>{{ 'label.average_price'|trans }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for component in orderedComponents %}
+                            <tr class="row_link" data-href="{{ path("component_enable", {"component": component.getId() }) }}">
+                                <td>{{ component.getId() }}</td>
+                                <td>{{ component.getName() }}</td>
+                                <td>{{ component.getVersion() }}</td>
+                                <td>{{ component.getAveragePrice() }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    {% endif %}
+
+    <div class="card">
+        <div class="card-header">
+            {{ 'components.overview'|trans }}
+        </div>
+        <div class="card-body">
+            <table class="table table-responsive-sm table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{{ 'name_of_component'|trans }}</th>
+                        <th>{{ 'estimated_price'|trans }}</th>
+                        <th>{{ 'version'|trans }}</th>
+                        <th>{{ 'createdAt'|trans }}</th>
+                        <th>{{ 'updatedAt'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for component in components %}
+                    <tr class="row_link" data-href="{{ path('component_update', {"component": component.getId() }) }}">
+                        <td>{{ component.getId() }}</td>
+                        <td>{{ component.getName() }}</td>
+                        <td>{{ component.getAveragePrice() }},-</td>
+                        <td>{{ component.getVersion() }}</td>
+                        <td>{{ component.getCreatedAt()|date('m.d.Y', "Europe/London") }}</td>
+                        <td>{{ component.getUpdatedAt()|date('m.d.Y', "Europe/London") }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

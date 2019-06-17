@@ -7,39 +7,43 @@
                 <div class="card-header">
                     <i class="fa fa-align-justify"></i> {{ 'table.list_of_emails'|trans }}</div>
                 <div class="card-body">
-                    <table class="table table-responsive-sm table-striped">
-                        <thead>
-                        <tr>
-                            <th>{{ 'name'|trans }}</th>
-                            <th>{{ 'email_address'|trans }}</th>
-                            <th>{{ 'subject'|trans }}</th>
-                            <th>{{ 'sent_on'|trans }}</th>
-                            <th>{{ 'status'|trans }}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            {% for email in emails %}
-                                <tr class="row_link" data-href="{{ path("email_view", {"id": email.getId() }) }}">
-                                    <td>{{ email.getName() }}</td>
-                                    <td>{{ email.getClientEmail() }}</td>
-                                    <td>{{ email.getSubject() }}</td>
-                                    <td>{{ email.getCreatedAt()|date("m.d.Y", "Europe/London") }}</td>
-                                    <td>
-                                        {% if email.getActive() == 1 %}
-                                            <span class="badge badge-danger">
-                                                {{ 'new'|trans }}
-                                            </span>
-                                        {% else %}
-                                            <span class="badge badge-success">
-                                                {{ 'read_past'|trans }}
-                                            </span>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    {% include "Admin/Asset/pagination.html.twig" %}
+                    {% if emails is not empty %}
+                        <table class="table table-responsive-sm table-striped">
+                            <thead>
+                            <tr>
+                                <th>{{ 'name'|trans }}</th>
+                                <th>{{ 'email_address'|trans }}</th>
+                                <th>{{ 'subject'|trans }}</th>
+                                <th>{{ 'sent_on'|trans }}</th>
+                                <th>{{ 'status'|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for email in emails %}
+                                    <tr class="row_link" data-href="{{ path("email_view", {"id": email.getId() }) }}">
+                                        <td>{{ email.getName() }}</td>
+                                        <td>{{ email.getClientEmail() }}</td>
+                                        <td>{{ email.getSubject() }}</td>
+                                        <td>{{ email.getCreatedAt()|date("m.d.Y", "Europe/London") }}</td>
+                                        <td>
+                                            {% if email.getActive() == 1 %}
+                                                <span class="badge badge-danger">
+                                                    {{ 'new'|trans }}
+                                                </span>
+                                            {% else %}
+                                                <span class="badge badge-success">
+                                                    {{ 'read_past'|trans }}
+                                                </span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% include "Admin/Asset/pagination.html.twig" %}
+                    {% else %}
+                        <div class="alert alert-warning">{{ 'no_emails'|trans }}</div>
+                    {% endif %}
                 </div>
             </div>
         </div>

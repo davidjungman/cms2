@@ -1,0 +1,68 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="card col-lg-9 p-0">
+            <div class="card-header">
+                {{ 'registration_of_new_component'|trans }}
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+
+                <div class="form-group">
+                    <label for="component_Name">{{ 'label.ComponentName'|trans }}</label>
+                    {{ form_widget(form.name, { "attr": { "class": "form-control" }} ) }}
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="component_average_price">{{ 'label.average_price'|trans }}</label>
+                            {{ form_widget(form.average_price, { "attr": { "class": "form-control" }} ) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="component_componentName">{{ 'label.tagComponent'|trans }}</label>
+                            {{ form_widget(form.componentName, { "attr": { "class": "form-control" }} ) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="component_description">{{ 'label.description'|trans }}</label>
+                    {{ form_widget(form.description, { "attr": { "class": "form-control" }} ) }}
+                </div>
+                {{ form_widget(form.registerComponentAndNext, { "attr": { "class": "btn btn-info float-right"}}) }}
+                {{ form_widget(form.registerComponent, { "attr": { "class": "btn btn-success float-right mr-1"}}) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="warning-block col-sm-6 col-lg-3">
+            <div class="col-sm-12">
+                <div class="card text-white bg-danger">
+                    <div class="card-body pb-0">
+                        <button class="btn btn-transparent p-0 float-right" type="button">
+                            <i class="fa fa-warning"></i>
+                        </button>
+                        <div class="text-value">{{ 'adding_component_can_result_in_system_failure'|trans }}</div>
+                    </div>
+                    <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                        <canvas class="chart" id="card-chart2" height="70"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="card text-white bg-danger">
+                    <div class="card-body pb-0">
+                        <button class="btn btn-transparent p-0 float-right" type="button">
+                            <i class="fa fa-warning"></i>
+                        </button>
+                        <div class="text-value">{{ 'warranty_ends_if_not_autheroziyed_user_adds_component'|trans }}</div>
+                    </div>
+                    <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                        <canvas class="chart" id="card-chart2" height="70"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

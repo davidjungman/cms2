@@ -6,12 +6,10 @@
                 <source>system.update.successful</source>
                 <target>Změna nastavení systému problěha úspěšně.</target>
             </trans-unit>
-
             <trans-unit id="title.contact_us">
                 <source>title.contact_us</source>
                 <target>Kontaktujte Nás</target>
             </trans-unit>
-
             <trans-unit id="label.name">
                 <source>label.name</source>
                 <target>Vaše jméno</target>
@@ -100,7 +98,22 @@
                 <source>label.event.color</source>
                 <target>Barva události</target>
             </trans-unit>
-
+            <trans-unit id="label.ComponentName">
+                <source>label.ComponentName</source>
+                <target>Název komponenty</target>
+            </trans-unit>
+            <trans-unit id="label.average_price">
+                <source>label.average_price</source>
+                <target>Odhadovaná cena</target>
+            </trans-unit>
+            <trans-unit id="label.tagComponent">
+                <source>label.tagComponent</source>
+                <target>Označení komponenty</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>Popis</target>
+            </trans-unit>
             <trans-unit id="submit.send">
                 <source>submit.send</source>
                 <target>Odeslat</target>
@@ -109,12 +122,10 @@
                 <source>submit.save_changes</source>
                 <target>Uložit změny</target>
             </trans-unit>
-
             <trans-unit id="post.send_successfully">
                 <source>post.send_successfully</source>
                 <target>Email byl odeslán úspěšně!</target>
             </trans-unit>
-
             <trans-unit id="nav.dashboard">
                 <source>nav.dashboard</source>
                 <target>Nástěnka</target>
@@ -127,7 +138,6 @@
                 <source>nav.website_editing</source>
                 <target>Úpravy webu</target>
             </trans-unit>
-
             <trans-unit id="nav.users">
                 <source>nav.users</source>
                 <target>Uživatelé</target>
@@ -176,7 +186,14 @@
                 <source>nav.event_calendar</source>
                 <target>Kalendář událostí</target>
             </trans-unit>
-
+            <trans-unit id="nav.administration">
+                <source>nav.administration</source>
+                <target>Administrace</target>
+            </trans-unit>
+            <trans-unit id="nav.component.manager">
+                <source>nav.component.manager</source>
+                <target>Manager komponent</target>
+            </trans-unit>
             <trans-unit id="widget.amount_of_new_emails">
                 <source>widget.amount_of_new_emails</source>
                 <target>Celkový počet nových emailů</target>
@@ -189,12 +206,10 @@
                 <source>widget.amount_of_enabled_components</source>
                 <target>Počet aktivovaných komponent</target>
             </trans-unit>
-
             <trans-unit id="table.list_of_emails">
                 <source>table.list_of_emails</source>
                 <target>Seznam emailů</target>
             </trans-unit>
-
             <trans-unit id="name">
                 <source>name</source>
                 <target>Jméno</target>
@@ -336,6 +351,70 @@
             <trans-unit id="close">
                 <source>close</source>
                 <target>Zavřít</target>
+            </trans-unit>
+            <trans-unit id="components.overview">
+                <source>components.overview</source>
+                <target>Přehled komponent</target>
+            </trans-unit>
+            <trans-unit id="home">
+                <source>home</source>
+                <target>Domů</target>
+            </trans-unit>
+            <trans-unit id="admin">
+                <source>admin</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="register.new.component">
+                <source>register.new.component</source>
+                <target>Registrovat novou komponentu</target>
+            </trans-unit>
+            <trans-unit id="registration_of_new_component">
+                <source>registration_of_new_component</source>
+                <target>Registrace nové komponenty</target>
+            </trans-unit>
+            <trans-unit id="new.component">
+                <source>new.component</source>
+                <target>Nová komponenta</target>
+            </trans-unit>
+            <trans-unit id="updatedAt">
+                <source>updatedAt</source>
+                <target>Datum upravení</target>
+            </trans-unit>
+            <trans-unit id="createdAt">
+                <source>createdAt</source>
+                <target>Datum vytvoření</target>
+            </trans-unit>
+            <trans-unit id="order.overview">
+                <source>order.overview</source>
+                <target>Přehled objednávek</target>
+            </trans-unit>
+            <trans-unit id="adding_component_can_result_in_system_failure">
+                <source>adding_component_can_result_in_system_failure</source>
+                <target>Registrace nové komponenty může způsobit pád programu!</target>
+            </trans-unit>
+            <trans-unit id="warranty_ends_if_not_autheroziyed_user_adds_component">
+                <source>warranty_ends_if_not_autheroziyed_user_adds_component</source>
+                <target>Záruka s okamžitou platností končí, pokud neoprávněný uživatel registruje novou komponentu!</target>
+            </trans-unit>
+            <trans-unit id="no_new_components_ordered">
+                <source>no_new_components_ordered</source>
+                <target>Žádné nové objednané komponenty</target>
+            </trans-unit>
+            <trans-unit id="update.component">
+                <source>update.component</source>
+                <target>Upravení komponenty</target>
+            </trans-unit>
+            <trans-unit id="updateAndSave">
+                <source>updateAndSave</source>
+                <target>Upravit a uložit</target>
+            </trans-unit>
+            <trans-unit id="deleteComponent">
+                <source>deleteComponent</source>
+                <target>Smazat komponentu</target>
+            </trans-unit>
+            <trans-unit id="no_new_emails">
+                <source>no_emails</source>
+                <target>Žádné emaily zatím nedorazili</target>
             </trans-unit>
         </body>
     </file>

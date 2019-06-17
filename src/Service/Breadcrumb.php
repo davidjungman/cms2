@@ -3,11 +3,7 @@
 namespace App\Service;
 
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Part of program created by David Jungman
@@ -26,14 +22,20 @@ class Breadcrumb
      */
     private $separator;
 
+    private $translator;
+
     /**
      * Breadcrumb constructor.
+     *
+     * @param  \Symfony\Contracts\Translation\TranslatorInterface  $translator
      */
-    public function __construct()
+    public function __construct(TranslatorInterface $translator)
     {
+        $this->translator = $translator;
+
         $this->separator = "/";
-        $this->addItem("Domů", "landing_page");
-        $this->addItem("Admin", "dashboard_index");
+        $this->addItem("home", "landing_page");
+        $this->addItem("admin", "dashboard_index");
     }
 
     /**
@@ -48,7 +50,7 @@ class Breadcrumb
     {
         array_push($this->items,array(
           "path" => $route,
-          "value" => $name
+          "value" => $this->translator->trans($name)
         ));
         return $this;
     }

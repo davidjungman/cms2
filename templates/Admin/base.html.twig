@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
     <head>
         <meta charset="UTF-8">
         <meta charset="utf-8">
@@ -60,6 +60,13 @@
                             </div>
                         </li>
                     </ol>
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
                 <div class="container-fluid">
                     <div class="animated fadeIn">
                         {% block body %}

@@ -444,6 +444,90 @@
                 <source>Stay_logged_in</source>
                 <target>Zůstat přihlášen</target>
             </trans-unit>
+            <trans-unit id="user.manager">
+                <source>user.manager</source>
+                <target>Manager uživatelů</target>
+            </trans-unit>
+            <trans-unit id="name.and.surname">
+                <source>name.and.surname</source>
+                <target>Jméno a přijmení</target>
+            </trans-unit>
+            <trans-unit id="username">
+                <source>username</source>
+                <target>Uživatelské jméno</target>
+            </trans-unit>
+            <trans-unit id="user.is.missing.name.or.surname">
+                <source>user.is.missing.name.or.surname</source>
+                <target>Uživateli chybí jméno či přijmení</target>
+            </trans-unit>
+            <trans-unit id="waiting.for.confirm">
+                <source>waiting.for.confirm</source>
+                <target>Čekám na potvrzení</target>
+            </trans-unit>
+            <trans-unit id="lastAccessAt">
+                <source>lastAccessAt</source>
+                <target>Datum posledního přihlášení</target>
+            </trans-unit>
+            <trans-unit id="list.of.users">
+                <source>list.of.users</source>
+                <target>Seznam uživatelů</target>
+            </trans-unit>
+            <trans-unit id="widget.amount_of_users">
+                <source>widget.amount_of_users</source>
+                <target>Počet uživatelů</target>
+            </trans-unit>
+            <trans-unit id="user.update">
+                <source>user.update</source>
+                <target>Upravení uživatele</target>
+            </trans-unit>
+            <trans-unit id="reverify.user">
+                <source>reverify.user</source>
+                <target>Znovu ověřit uživatele</target>
+            </trans-unit>
+            <trans-unit id="remove.user">
+                <source>remove.user</source>
+                <target>Odstranit uživatele</target>
+            </trans-unit>
+            <trans-unit id="user.information">
+                <source>user.information</source>
+                <target>Informace o uživateli</target>
+            </trans-unit>
+            <trans-unit id="reset.user.password">
+                <source>reset.user.password</source>
+                <target>Restartovat heslo</target>
+            </trans-unit>
+            <trans-unit id="surname">
+                <source>surname</source>
+                <target>Přijmení</target>
+            </trans-unit>
+            <trans-unit id="permission.level">
+                <source>permission.level</source>
+                <target>Úroveň oprávnění</target>
+            </trans-unit>
+            <trans-unit id="update.and.save">
+                <source>update.and.save</source>
+                <target>Upravit a uložit</target>
+            </trans-unit>
+            <trans-unit id="your.user.profile">
+                <source>your.user.profile</source>
+                <target>Váš uživatelský profil</target>
+            </trans-unit>
+            <trans-unit id="password.reset.for.user">
+                <source>password.reset.for.user</source>
+                <target>Restartování hesla pro uživatele</target>
+            </trans-unit>
+            <trans-unit id="new.password">
+                <source>new.password</source>
+                <target>Nové heslo</target>
+            </trans-unit>
+            <trans-unit id="new.password.again">
+                <source>new.password.again</source>
+                <target>Nové heslo znovu</target>
+            </trans-unit>
+            <trans-unit id="password.reset">
+                <source>password.reset</source>
+                <target>Restartování hesla</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

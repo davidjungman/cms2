@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    const ITEMS_PER_PAGE = 10;
 
     /**
      * @ORM\Id()
@@ -72,6 +73,12 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $verificationLink;
+
+    /**
+     * @Gedmo\Mapping\Annotation\Timestampable(on="update")
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -249,5 +256,17 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getUpdatedAt(): ?DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }

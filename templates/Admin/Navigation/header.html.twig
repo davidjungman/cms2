@@ -7,7 +7,7 @@
         <a class="nav-link" href="{{ path("dashboard_index") }}">{{ 'nav.dashboard'|trans }}</a>
     </li>
     <li class="nav-item px-3">
-        <a class="nav-link" href="#">{{ 'nav.users'|trans }}</a>
+        <a class="nav-link" href="{{ path("user_index") }}">{{ 'nav.users'|trans }}</a>
     </li>
     <li class="nav-item px-3">
         <a class="nav-link" href="{{ path("settings_index") }}">{{ 'nav.settings'|trans }}</a>
@@ -16,14 +16,15 @@
 
 <ul class="nav navbar-nav ml-auto">
     <li class="nav-item d-md-down-none">
+        <a class="nav-link" href="{{ path("user_update", {"user": app.getUser().getId() }) }}">
+            <i class="icon-user"></i>
+            {{ app.getUser().getUsername() }}
+        </a>
+    </li>
+    <li class="nav-item d-md-down-none pr-3 pl-3">
         <a class="nav-link" href="{{ path("logout") }}">
             <i class="fa fa-sign-out"></i>
             {{ 'account.logout'|trans }}
-        </a>
-    </li>
-    <li class="nav-item d-md-down-none">
-        <a class="nav-link" href="#">
-            <i class="icon-list"></i>
         </a>
     </li>
 </ul>

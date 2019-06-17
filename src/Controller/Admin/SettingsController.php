@@ -65,10 +65,10 @@ final class SettingsController extends AbstractController
         $components = $this->componentRepository->findAllByPage($page);
         $settings = $this->settingsRepository->find(1);
 
-        $totalComponents = $this->componentRepository->countAll();
+        $totalComponents = $components->count();
         $totalEnabledComponents = $this->componentRepository->countEnabled();
 
-        $maxPages = ceil($components->count() / Component::ITEMS_PER_PAGE);
+        $maxPages = ceil($totalComponents / Component::ITEMS_PER_PAGE);
 
         $form = $this->createForm(SettingsType::class, $settings)
           ->add("submit", SubmitType::class, array("label_format" => "submit.save_changes"));

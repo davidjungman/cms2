@@ -1,0 +1,115 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block modals %}
+    <div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="resetModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resetModal">
+                        {{ 'password.reset.for.user'|trans }}: <b>{{ user.getUsername() }}</b>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{ path('user_reset', {'user': user.getId() } ) }}">
+                        <div class="form-group">
+                            <label for="password">{{ 'new.password'|trans }}</label>
+                            <input id="password" name="password" type="password" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password_again">{{ 'new.password.again'|trans }}</label>
+                            <input id="password_again" name="password_again" type="password" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-primary float-right">
+                            {{ 'password.reset'|trans }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <h3>
+        {{ 'user.update'|trans }}
+        {% if user == app.user %}
+            <span class="badge badge-success">
+                {{ 'your.user.profile'|trans }}
+            </span>
+        {% endif %}
+        <div class="float-right">
+            <a onclick="return confirm('Are you sure?')" href="{{ path('user_deactivate', {"user": user.getId()}) }}">
+                <span class="badge badge-danger">
+                    {{ 'reverify.user'|trans }}
+                </span>
+            </a>
+            {% if user != app.user %}
+                <a onclick="return confirm('Are you sure?')" href="{{ path('user_delete', {"user": user.getId()}) }}">
+                    <span class="badge badge-danger">
+                        {{ 'remove.user'|trans }}
+                    </span>
+                </a>
+            {% endif %}
+            <a id="resetPassword" href="#">
+                <span class="badge badge-danger">
+                    {{ 'reset.user.password'|trans }}
+                </span>
+            </a>
+        </div>
+    </h3>
+    <div class="card">
+        <div class="card-header">
+            {{ 'user.information'|trans }}
+        </div>
+        <div class="card-body">
+            {{ form_start(form) }}
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>{{ 'Email.address'|trans }}</label>
+                            {{ form_widget(form.email, { "attr": { "class": "form-control" } } ) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>{{ 'username'|trans }}</label>
+                            {{ form_widget(form.username, { "attr": { "class": "form-control" } } ) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>{{ 'name'|trans }}</label>
+                            {{ form_widget(form.name, { "attr": { "class": "form-control" } } ) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>{{ 'surname'|trans }}</label>
+                            {{ form_widget(form.surname, { "attr": { "class": "form-control" } } ) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>{{ 'permission.level'|trans }}</label>
+                            {{ form_widget(form.role, { "attr": { "class": "form-control" } } ) }}
+                        </div>
+                    </div>
+                </div>
+                {{ form_widget(form.updateAndSave, { "attr": {"class": "btn btn-primary float-right"} }) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $("#resetPassword").click(() => {
+            $("#resetModal").modal("show");
+        });
+    </script>
+{% endblock %}

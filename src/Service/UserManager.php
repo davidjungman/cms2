@@ -12,6 +12,9 @@ use Swift_Mailer;
 use Swift_Message;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 /**
  * Part of program created by David Jungman
@@ -117,6 +120,31 @@ class UserManager
         }
 
         return "User was created successfully";
+    }
+
+    public function encodePassword(User $user, string $newPassword): string
+    {
+        return $this->encoder->encodePassword($user, $newPassword);
+    }
+
+    public function resetVerification(User $user)
+    {
+        $user->setActive(0);
+        $link = $user->generateVerificationLink();
+        try {
+            $this->sendVerification($user->getEmail(), $link);
+        } catch (LoaderError $e) {
+            return $e->getMessage();
+        } catch (RuntimeError $e) {
+            return $e->getMessage();
+        } catch (SyntaxError $e) {
+            return $e->getMessage();
+        }
+
+        $this->em->merge($user);
+        $this->em->flush();
+
+        return "success";
     }
 
     /**

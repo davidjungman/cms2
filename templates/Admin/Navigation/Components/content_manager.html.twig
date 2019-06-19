@@ -1,0 +1,27 @@
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#">
+        <i class="nav-icon fa fa-globe"></i>
+        {{ 'nav.content_manager'|trans }}
+    </a>
+
+    <ul class="nav-dropdown-items">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('content_text') }}">
+                <i class="nav-icon fa fa-font"></i>
+                {{ 'nav.text_manager'|trans }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('content_photo') }}">
+                <i class="nav-icon fa fa-image"></i>
+                {{ 'nav.photo_manager'|trans }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('content_widget') }}">
+                <i class="nav-icon fa fa-puzzle-piece"></i>
+                {{ 'nav.widget_manager'|trans }}
+            </a>
+        </li>
+    </ul>
+</li>

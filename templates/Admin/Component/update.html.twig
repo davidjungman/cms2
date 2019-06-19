@@ -27,6 +27,10 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="component_Name">{{ 'label.ComponentName'|trans }}</label>
+                {{ form_widget(form.dependencies, { "attr": { "class": "form-control mh-150px" }} ) }}
+            </div>
+            <div class="form-group">
                 <label for="component_description">{{ 'label.description'|trans }}</label>
                 {{ form_widget(form.description, { "attr": { "class": "form-control" }} ) }}
             </div>

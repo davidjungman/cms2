@@ -1,0 +1,65 @@
+<style>
+    .main-color{background-color:#9933CC;color:white !important;}
+    .fill-color{background-color:#ede7f6; color:black !important;}
+
+    .background-color{background-color:#f5f5f5;}
+    .main-image{max-height:400px;}
+</style>
+<div class="background-color">
+    <div class="image">
+        <img class="w-100 main-image"
+             src="{{ asset("img/front/main-image.jpeg") }}" alt="main-image">
+    </div>
+    <div class="header mt-1">
+        <nav class="navbar navbar-expand-lg navbar-dark main-color z-depth-1">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <ul class="navbar-nav justify-content-center w-100">
+                    {% for page in pages %}
+                        {% if page == selectedPage %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ path(app.request.attributes.get('_route'), {"selectedPage":page.getId()}) }}">
+                                    {{ page.getName() }}
+                                    <span class="sr-only"></span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link">
+                                    {{ page.getName() }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="main-content col-12 pt-3">
+        <div class="row">
+            {% if widgets is not empty %}
+                {% for widget in widgets %}
+                    <div class="widgets pr-3 col-3" style="padding:0">
+                        <div class="card">
+                            <div class="card-header main-color text-center">
+                                {{ widget.getTitle() }}
+                            </div>
+                            <div class="card-body text-left">
+                                {{ widget.getContent() }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="content_box col p-3 fill-color z-depth-1">
+                <h2 id="page_title" data-name="page[title]" class="editable input-like">{{ selectedPage.getTitle() }}</h2>
+                <article id="page_content" data-name="page[content]" class="pl-2 editable textarea-like">
+                    {{ selectedPage.getContent() }}
+                </article>
+            </div>
+        </div>
+    </div>
+</div>

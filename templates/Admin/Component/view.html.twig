@@ -20,6 +20,16 @@
                     {{ 'not_bought'|trans }}
                 </span>
         {% endif %}
+        {% if component.getDependencies() is not empty %}
+            <span class="badge badge-warning font-weight-light">
+                    {{ 'part.of.a.bundle'|trans }}
+                </span>
+        {% endif %}
+        {% if component.isCoreComponent() %}
+            <span class="badge badge-warning font-weight-light">
+                {{ 'is.core.component'|trans }}
+            </span>
+        {% endif %}
     </h3>
 
     <div class="card">
@@ -53,6 +63,73 @@
             {{ form_end(form) }}
         </div>
     </div>
+
+    {% if bundle is not empty %}
+        <div class="card">
+        <div class="card-header">
+            {{ 'other.bundle.components'|trans }}
+        </div>
+        <div class="card-body">
+            <table class="table table-responsive-sm table-striped">
+                <thead>
+                <tr>
+                    <th>{{ 'name_of_component'|trans }}</th>
+                    <th>{{ 'estimated_price'|trans }}</th>
+                    <th>{{ 'version'|trans }}</th>
+                    <th>{{ 'activation_date'|trans }}</th>
+                    <th>{{ 'status'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for component in bundle %}
+                    <tr class="row_link" data-href="{{ path("component_view", {"id": component.getId() }) }}">
+                        <td>{{ component.getName() }}</td>
+                        <td>{{ component.getAveragePrice() }},-</td>
+                        <td>{{ component.getVersion() }}</td>
+                        <td>
+                            {% if component.isEnabled() %}
+                                {{ component.getEnabledAt()|date("d.m.Y") }}
+                            {% elseif component.isRequired() %}
+                                <span class="badge badge-warning">
+                                                {{ 'soon_active'|trans }}
+                                            </span>
+                            {% elseif component.isDisabled() and component.canBeEnabled() %}
+                                <span class="badge badge-danger">
+                                                {{ 'component_is_not_active'|trans }}
+                                            </span>
+                            {% else %}
+                                <span class="badge badge-danger">
+                                                {{ 'not_bought'|trans }}
+                                            </span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if component.isEnabled() %}
+                                <span class="badge badge-success">
+                                            {{ 'active'|trans }}
+                                        </span>
+                            {% elseif component.isRequired() %}
+                                <span class="badge badge-warning">
+                                            {{ 'is_applied_for'|trans }}
+                                        </span>
+                            {% elseif component.isDisabled() and component.canBeEnabled() %}
+                                <span class="badge badge-danger">
+                                            {{ 'disabled'|trans }}
+                                        </span>
+                            {% else  %}
+                                <span class="badge badge-danger">
+                                            {{ 'not_bought'|trans }}
+                                        </span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="float-right text-dark">Celková cena balíčku: {{ bundlePrice }},-</div>
+        </div>
+    </div>
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

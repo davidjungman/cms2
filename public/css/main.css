@@ -1,19 +1,17 @@
 .row_link {
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .row_link:hover {
-  background: #c8ced3 !important;
-}
+  background: #c8ced3 !important; }
 
 * {
-  font-family: "Roboto", sans-serif;
-}
+  font-family: "Roboto", sans-serif; }
 
-a, a:hover
-{
-  text-decoration:none !important;
-  text-underline: none !important;
-}
+a, a:hover {
+  text-decoration: none !important;
+  text-underline: none !important; }
+
+.mh-150px {
+  min-height: 150px; }
 
 /*# sourceMappingURL=main.css.map */

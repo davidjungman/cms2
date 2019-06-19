@@ -3,3 +3,5 @@ formatDateForInput = (date) => date.getFullYear()+"-"+formatMonthTwoDigits(date)
 formatMonthTwoDigits = date => ("0" + (date.getMonth() + 1)).slice(-2);
 
 formatDayTwoDigits = date => ("0" + date.getDate()).slice(-2);
+
+isEmptyOrSpaces = (str) => str === null || str.match(/^ *$/) !== null;

@@ -9,6 +9,7 @@ use App\Form\ComponentType;
 use App\Repository\ComponentRepository;
 use App\Repository\SettingsRepository;
 use App\Service\Breadcrumb;
+use App\Service\BundleManager;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -80,32 +81,26 @@ final class ComponentController extends AbstractController
      *
      * @param  \App\Service\Breadcrumb  $breadcrumb
      *
+     * @param  \App\Service\BundleManager  $manager
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function view(Request $request, Component $component, Breadcrumb $breadcrumb)
+    public function view(Request $request, Component $component, Breadcrumb $breadcrumb, BundleManager $manager)
     {
         $form = $this->createForm(ComponentSwitchType::class);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
-            /**
-             * If component was once activated, user can switch between DISABLED and ENABLED without REQUIRED step
-             */
-            if($component->isDisabled()) {
-
-                if($component->canBeEnabled())
-                {
-                    $component->enableComponent();
-                } else
-                {
-                    $component->requireComponent();
-                }
+            if(!$component->getIsStandaloneComponent())
+            {
+                $manager->activateComponentDependencies($component);
             }
 
-            elseif($component->isEnabled()) $component->disableComponent();
-
-            elseif($component->isRequired()) $component->setIsRequired(false);
+            /**
+            * If component was once activated, user can switch between DISABLED and ENABLED without REQUIRED step
+            */
+            $manager->activateSingleComponent($component);
 
             $em = $this->getDoctrine()->getManager();
             $em->merge($component);
@@ -119,6 +114,8 @@ final class ComponentController extends AbstractController
         return $this->render("Admin/Component/view.html.twig", array(
           "component" => $component,
           "form" => $form->createView(),
+          "bundle" => $component->getDependencies(),
+          "bundlePrice" => $component->getTotalPrice(),
           "breadcrumb" => $breadcrumb->createView()
         ));
     }
@@ -144,23 +141,27 @@ final class ComponentController extends AbstractController
             ->setSettings($settingsRepository->find(1));
 
         $form = $this->createForm(ComponentType::class,$component)
-          ->add('registerComponent', SubmitType::class)
-          ->add('registerComponentAndNext', SubmitType::class);
+          ->add('registerComponent', SubmitType::class, array('label' => 'register.component'))
+          ->add('registerComponentAndNext', SubmitType::class, array('label' => 'register.component.and.next'))
+          ->add('registerComponentAsStandalone', SubmitType::class, array('label' => 'register.component.as.standalone'));
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
+            if($form->get('registerComponentAsStandalone')->isClicked())
+                $component->setIsStandaloneComponent(true);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($component);
             $em->flush();
 
             $this->addFlash('success', 'Komponenta byla vytvořena.');
 
-            if($form->get('registerComponent')->isClicked())
+            if($form->get('registerComponentAndNext')->isClicked())
             {
-                return $this->redirectToRoute("component_index");
-            } return $this->redirectToRoute('component_new');
+                return $this->redirectToRoute("component_new");
+            } return $this->redirectToRoute('component_index');
         }
 
 
@@ -203,10 +204,12 @@ final class ComponentController extends AbstractController
 
                 $this->addFlash("success", "Komponenta byla úspěšně upravena");
 
-            } else if($form->get("delete")->isClicked())
+            }
+            else if($form->get("delete")->isClicked())
             {
                 $em->remove($component);
                 $em->flush();
+
 
                 $this->addFlash("success", "Komponenta byla úspěšně odstraněna");
             }

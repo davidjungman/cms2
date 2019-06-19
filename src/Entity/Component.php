@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use DateTime;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,7 +22,7 @@ class Component
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $name;
 
@@ -77,11 +78,66 @@ class Component
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isCoreComponent;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isStandaloneComponent;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Component", inversedBy="dependantComponents")
+     * @ORM\JoinTable(name="dependencies",
+     *     joinColumns={@ORM\JoinColumn(name="dependency_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="dependant_id", referencedColumnName="id")}
+     *     )
+     */
+    private $dependencies;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Component", mappedBy="dependencies")
+     *
+     */
+    private $dependantComponents;
+
+    public function getDependencies()
+    {
+        return $this->dependencies;
+    }
+
+    public function getDependantComponents()
+    {
+        return $this->dependantComponents;
+    }
+
+    public function addDependency(Component $component)
+    {
+        if($this->getDependencies()->contains($component))
+        {
+            return $this;
+        }
+        $this->setIsStandaloneComponent(false);
+        $this->dependencies->add($component);
+        return $this;
+    }
+
+    public function setDependencies(ArrayCollection $arrayCollection)
+    {
+        if(!$arrayCollection->isEmpty()) $this->setIsStandaloneComponent(false);
+        $this->dependencies = $arrayCollection;
+    }
+
     public function __construct()
     {
         $this->setEnabled(false);
         $this->setVersion("1.0.0");
         $this->setIsRequired(false);
+
+        $this->dependencies = new ArrayCollection();
+        $this->dependantComponents = new ArrayCollection();
     }
 
     public function getUpdatedAt():DateTime
@@ -240,5 +296,46 @@ class Component
     public function isDisabled():bool
     {
         return (!$this->isEnabled() && !$this->isRequired);
+    }
+
+    public function getIsCoreComponent(): ?bool
+    {
+        return $this->isCoreComponent;
+    }
+
+    public function setIsCoreComponent(bool $isCoreComponent): self
+    {
+        $this->isCoreComponent = $isCoreComponent;
+
+        return $this;
+    }
+
+    public function getIsStandaloneComponent(): ?bool
+    {
+        return $this->isStandaloneComponent;
+    }
+
+    public function setIsStandaloneComponent(bool $isStandaloneComponent): self
+    {
+        $this->isStandaloneComponent = $isStandaloneComponent;
+        if($isStandaloneComponent == true) $this->dependencies = new ArrayCollection();
+
+        return $this;
+    }
+
+    public function getTotalPrice(): int
+    {
+        if($this->getIsStandaloneComponent() || $this->getDependencies()->isEmpty())
+        {
+            return $this->averagePrice;
+        }
+
+        $price = 0;
+        $price += $this->getAveragePrice();
+        foreach($this->getDependencies() as $dependency)
+        {
+            $price += $dependency->getAveragePrice();
+        }
+        return $price;
     }
 }

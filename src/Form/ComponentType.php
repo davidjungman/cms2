@@ -4,6 +4,8 @@ namespace App\Form;
 
 
 use App\Entity\Component;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,7 +24,20 @@ class ComponentType extends AbstractType
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
             ->add('average_price', TextType::class)
-            ->add('componentName', TextType::class);
+            ->add('componentName', TextType::class)
+            ->add('dependencies', EntityType::class, array(
+                'class' => Component::class,
+                'query_builder' => function (EntityRepository $er)
+                {
+                    return $er->createQueryBuilder('c')
+                      ->andWhere('c.isCoreComponent = false')
+                      ->andWhere('c.isStandaloneComponent = false');
+                },
+                'choice_label' => 'name',
+                'multiple' => true,
+                'required' => false,
+                'by_reference' => false,
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

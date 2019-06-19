@@ -1,0 +1,18 @@
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <!-- mdboostrap -->
+    <link href="{{ asset('node_modules/mdbootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/mdbootstrap/css/mdb.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/mdbootstrap/css/style.min.css') }}" rel="stylesheet">
+
+    <!-- font-awesome -->
+    <link href="{{ asset("node_modules/font-awesome/css/font-awesome.min.css") }}" rel="stylesheet">
+
+    <!-- custom -->
+    <link href="{{ asset("css/frontend.css") }}" rel="stylesheet">
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    {% block stylesheets %}{% endblock %}
+</head>

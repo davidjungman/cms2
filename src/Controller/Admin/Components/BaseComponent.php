@@ -27,7 +27,7 @@ class BaseComponent extends AbstractController
     public function __construct(ComponentRepository $repository, Breadcrumb $breadcrumb)
     {
         $thisComponent = $repository->findOneBy(["componentName" => static::COMPONENT_NAME]);
-        if(!$thisComponent->isEnabled())
+        if($thisComponent == null || !$thisComponent->isEnabled())
         {
             throw new NotFoundHttpException("Page not found");
         }

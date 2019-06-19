@@ -13,7 +13,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/admin/events")
@@ -53,7 +52,7 @@ final class EventController extends BaseComponent
      */
     public function index(Request $request, DateService $dateService)
     {
-        $this->breadcrumb->addItem("Kalendář událostí", "event_index");
+        $this->breadcrumb->addItem("event.calendar", "event_index");
 
         $event = new Event();
         $event->setActive(1);

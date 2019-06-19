@@ -1,0 +1,26 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block body %}
+    <div class="widgets pr-3 col-3" style="padding:0">
+        <a href="{{ path('widget_new') }}" class="card text-body">
+            <div class="card-header">
+                {{ 'create.new.widget'|trans }}
+            </div>
+            <div class="card-body text-left bg-green text-center text-white">
+                <i class="fa fa-plus-circle fa-3x"></i>
+            </div>
+        </a>
+    </div>
+    {% for widget in widgets %}
+        <div class="widgets pr-3 col-3" style="padding:0">
+            <div class="card">
+                <div class="card-header main-color text-center">
+                    {{ widget.getTitle() }}
+                </div>
+                <div class="card-body text-left">
+                    {{ widget.getContent() }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

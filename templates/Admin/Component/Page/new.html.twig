@@ -1,0 +1,32 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block body %}
+    <div class="card col-8 p-0">
+        <div class="card-header">
+            Nová stránka
+        </div>
+        <div class="card-body">
+            {{ form_start(form) }}
+                <div class="form-group">
+                    <label>Název stránky</label>
+                    {{ form_widget(form.name, { 'attr': { 'class': "form-control" } } ) }}
+                </div>
+                <div class="form-group">
+                    <label>Titulek na stránce</label>
+                    {{ form_widget(form.title, { 'attr': { 'class': "form-control" } } ) }}
+                    <small id="titleHelpBlock" class="form-text text-muted">
+                        {{ 'not.required.field'|trans }}
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label>Obsah stránky</label>
+                    {{ form_widget(form.content, { 'attr': { 'class': "form-control" } } ) }}
+                    <small id="contentHelpBlock" class="form-text text-muted">
+                        {{ 'not.required.field'|trans }}
+                    </small>
+                </div>
+                {{ form_widget(form.submit, { 'attr': { 'class': 'btn btn-success float-right' } } ) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

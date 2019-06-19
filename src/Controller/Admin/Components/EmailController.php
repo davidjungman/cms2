@@ -8,11 +8,9 @@ use App\Form\EmailType;
 use App\Repository\ComponentRepository;
 use App\Repository\EmailRepository;
 use App\Service\Breadcrumb;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Email Component allows managing Email Entities
@@ -47,7 +45,8 @@ final class EmailController extends BaseComponent
      */
     public function __construct(ComponentRepository $repository, Breadcrumb $breadcrumb)
     {
-        $this->breadcrumb = parent::__construct($repository, $breadcrumb);
+        $breadcrumb = parent::__construct($repository, $breadcrumb);
+        $this->breadcrumb = $breadcrumb->addItem("contact.form", "email_index");
     }
 
     /**

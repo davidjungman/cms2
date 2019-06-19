@@ -1,0 +1,48 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block body %}
+    <div class="col-lg-9">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> {{ 'page_list'|trans }}</div>
+            <div class="card-body">
+                {% if pages is not empty %}
+                    <table class="table table-responsive-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th>{{ 'label.pageName'|trans }}</th>
+                                <th>{{ 'title'|trans }}</th>
+                                <th>{{ 'createdBy'|trans }}</th>
+                                <th>{{ 'updatedBy'|trans }}</th>
+                                <th>{{ 'createdAt'|trans }}</th>
+                                <th>{{ 'updatedAt'|trans }}</th>
+                                <th>{{ 'hasContent'|trans }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for page in pages %}
+                            <tr class="row_link" data-href="{{ path("page_update", {"page": page.getId() }) }}">
+                                <td>{{ page.getName() }}</td>
+                                <td>{{ page.getTitle() }}</td>
+                                <td>{{ page.getCreatedBy().getUsername() }}</td>
+                                <td>{{ page.getUpdatedBy().getUsername() }}</td>
+                                <td>{{ page.getCreatedAt()|date("d.m.Y", "Europe/London") }}</td>
+                                <td>{{ page.getUpdatedAt()|date("d.m.Y", "Europe/London") }}</td>
+                                <td>
+                                    {% if page.getContent is null %}
+                                        <span class="badge badge-danger">{{ "no"|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-success">{{ "yes"|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div class="alert alert-warning">{{ 'no_pages'|trans }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

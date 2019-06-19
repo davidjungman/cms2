@@ -42,7 +42,6 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-
                             <div class="md-form">
                                 {{ form_widget(form.message, {"attr": {"class": "form-control md-textarea", "readonly": true} }) }}
                                 <label for="email_message">{{ 'label.message'|trans }}</label>
@@ -73,7 +72,7 @@
     <script>
         $("#copyEmailAddress").click((event) => {
             event.stopPropagation();
-            const email = $("#email_clientEmail").select();
+            $("#email_clientEmail").select();
             document.execCommand("copy");
         });
 

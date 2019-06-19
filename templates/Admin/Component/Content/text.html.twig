@@ -1,0 +1,105 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="card col-lg-4">
+            <div class="row">
+                <div class="card-header col-12">
+                    {{ 'list.of.pages'|trans }}
+                    <div class="card-header-actions">
+                        <a href="{{ path('page_new') }}" class="card-header-action">
+                            <i class="fa fa-plus-circle"></i>
+                            Přidat stránku
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body col-12">
+                    <ul class="list-group">
+                        {% for page in pages %}
+                            {% if page == selectedPage %}
+                                <a href="{{ path("content_text", { "selectedPage": page.getId() } ) }}" class="list-group-item text-body main-color">
+                                    {{ page.getName() }}
+                                </a>
+                            {% else %}
+                                <a href="{{ path("content_text", { "selectedPage": page.getId() } ) }}" class="list-group-item text-body">
+                                    {{ page.getName() }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{ form_start(form, {"attr": {"class": "col-lg-7 offset-lg-1 card p-0"}}) }}
+            <div class="card-header">
+                <div>{{ "web.editation"|trans }}:</div>
+                {{ form_widget(form.name, {'attr': {'class': 'form-control'} } ) }}
+            </div>
+            <div class="card-body p-0">
+                <div id="frontend" class="container pt-2 background-color pb-5">
+                {% include "content.html.twig" %}
+            </div>
+            </div>
+            <div class="card-footer">
+                {{ form_widget(form.submit, {"attr": {"class": "btn btn-success float-right"}}) }}
+            </div>
+            {% do form.title.setRendered() %}
+            {% do form.content.setRendered() %}
+        {{ form_end(form) }}
+        </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .page-footer{display:none; !important;}
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        // disable links for included Frontend Page
+        $(document).ready(() => {
+            $("#frontend").find('a').click(() => false);
+
+            if(true == null) $(".editable").text('Sem vložte Váš text');
+        });
+
+        // whenever user clicks on div which is supposed to be edited, change it to input / textarea based on class
+        $(".editable").on("click", (e) => {
+            $(".fa").remove("fa-pencil");
+            const target = $(e.target);
+            let input;
+            let text = $(target).text().trim();
+
+            if(target.hasClass("input-like"))
+            {
+                input = $('<input />', {
+                    'id' : target.attr('id'),
+                    'name' : target.attr('data-name'),
+                    'type' : 'text',
+                    'class': 'col-12 form-control',
+                    'value': text,
+                    'required': true
+                });
+            } else
+            {
+                input = $('<textarea />', {
+                    'class': 'col-12 form-control',
+                    'id' : target.attr('id'),
+                    'name' : target.attr('data-name'),
+                    'required': true
+                });
+                $(input).val(text);
+            }
+
+            $(e.target).replaceWith(input);
+        });
+
+        filterHTML = (value) =>
+        {
+            return value.innerText || value.textContent;
+        }
+    </script>
+{% endblock %}

@@ -30,6 +30,10 @@
                 <source>label.companyName</source>
                 <target>Název firmy</target>
             </trans-unit>
+            <trans-unit id="label.pageName">
+                <source>label.pageName</source>
+                <target>Název stránky</target>
+            </trans-unit>
             <trans-unit id="label.system_version">
                 <source>label.system_version</source>
                 <target>Verze systému</target>
@@ -81,6 +85,10 @@
             <trans-unit id="label.event.title">
                 <source>label.event.title</source>
                 <target>Název události</target>
+            </trans-unit>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>Titulek</target>
             </trans-unit>
             <trans-unit id="label.event.description">
                 <source>label.event.description</source>
@@ -146,6 +154,10 @@
                 <source>nav.settings</source>
                 <target>Nastavení</target>
             </trans-unit>
+            <trans-unit id="nav.widget_manager">
+                <source>nav.widget_manager</source>
+                <target>Správce bloků</target>
+            </trans-unit>
             <trans-unit id="nav.system">
                 <source>nav.system</source>
                 <target>Systém</target>
@@ -159,16 +171,48 @@
                 <target>Kontaktní formulář</target>
             </trans-unit>
             <trans-unit id="nav.contact_form.list">
-                    <source>nav.contact_form.list</source>
-                    <target>Seznam emailů</target>
-                </trans-unit>
+                <source>nav.contact_form.list</source>
+                <target>Seznam emailů</target>
+            </trans-unit>
+            <trans-unit id="widget_list">
+                <source>widget_list</source>
+                <target>Seznam bloků</target>
+            </trans-unit>
+            <trans-unit id="new.widget">
+                <source>new.widget</source>
+                <target>Nový blok</target>
+            </trans-unit>
             <trans-unit id="nav.gallery">
                 <source>nav.gallery</source>
                 <target>Fotogalerie</target>
             </trans-unit>
+            <trans-unit id="is.standalone.component">
+                <source>is.standalone.component</source>
+                <target>Samostatná komponenta</target>
+            </trans-unit>
+            <trans-unit id="register.component.and.next">
+                <source>register.component.and.next</source>
+                <target>Registrovat komponentu a další</target>
+            </trans-unit>
+            <trans-unit id="register.component">
+                <source>register.component</source>
+                <target>Registrovat komponentu</target>
+            </trans-unit>
+            <trans-unit id="register.component.as.standalone">
+                <source>register.component.as.standalone</source>
+                <target>Registrovat komponentu jako samostatnou</target>
+            </trans-unit>
             <trans-unit id="nav.texts">
                 <source>nav.texts</source>
                 <target>Texty</target>
+            </trans-unit>
+            <trans-unit id="create.new.widget">
+                <source>create.new.widget</source>
+                <target>Vytvořit nový blok</target>
+            </trans-unit>
+            <trans-unit id="other.bundle.components">
+                <source>other.bundle.components</source>
+                <target>Další komponenty v balíčku</target>
             </trans-unit>
             <trans-unit id="nav.texts.list">
                     <source>nav.texts.list</source>
@@ -189,6 +233,14 @@
             <trans-unit id="nav.administration">
                 <source>nav.administration</source>
                 <target>Administrace</target>
+            </trans-unit>
+            <trans-unit id="part.of.a.bundle">
+                <source>part.of.a.bundle</source>
+                <target>Součást balíčku</target>
+            </trans-unit>
+            <trans-unit id="is.core.component">
+                <source>is.core.component</source>
+                <target>Hlavní komponenta</target>
             </trans-unit>
             <trans-unit id="nav.component.manager">
                 <source>nav.component.manager</source>
@@ -384,6 +436,26 @@
                 <source>createdAt</source>
                 <target>Datum vytvoření</target>
             </trans-unit>
+            <trans-unit id="createdBy">
+                <source>createdBy</source>
+                <target>Vytvořena Uživatelem</target>
+            </trans-unit>
+            <trans-unit id="updatedBy">
+                <source>updatedBy</source>
+                <target>Naposledy upravená Uživatelem</target>
+            </trans-unit>
+            <trans-unit id="hasContent">
+                <source>hasContent</source>
+                <target>Má obsah</target>
+            </trans-unit>
+            <trans-unit id="no">
+                <source>no</source>
+                <target>Ne</target>
+            </trans-unit>
+            <trans-unit id="yes">
+                <source>yes</source>
+                <target>Ano</target>
+            </trans-unit>
             <trans-unit id="order.overview">
                 <source>order.overview</source>
                 <target>Přehled objednávek</target>
@@ -535,6 +607,82 @@
             <trans-unit id="no.identification.number">
                 <source>no.identification.number</source>
                 <target>Nebylo nalezeno žádné identifikační číslo ( IČ ) !</target>
+            </trans-unit>
+            <trans-unit id="nav.content_manager">
+                <source>nav.content_manager</source>
+                <target>Správce obsahu</target>
+            </trans-unit>
+            <trans-unit id="nav.text_manager">
+                <source>nav.text_manager</source>
+                <target>Správce textů</target>
+            </trans-unit>
+            <trans-unit id="nav.photo_manager">
+                <source>nav.photo_manager</source>
+                <target>Správce fotografií</target>
+            </trans-unit>
+            <trans-unit id="page_list">
+                <source>page_list</source>
+                <target>Seznam stránek</target>
+            </trans-unit>
+            <trans-unit id="nav.page_manager">
+                <source>nav.page_manager</source>
+                <target>Správce stránek</target>
+            </trans-unit>
+            <trans-unit id="nav.page_order">
+                <source>nav.page_order</source>
+                <target>Pořadí stránek</target>
+            </trans-unit>
+            <trans-unit id="new.page">
+                <source>new.page</source>
+                <target>Nová stránka</target>
+            </trans-unit>
+            <trans-unit id="not.required.field">
+                <source>not.required.field</source>
+                <target>Toto pole není vyžadováno a může být vyplněno dodatečně.</target>
+            </trans-unit>
+            <trans-unit id="createNewPage">
+                <source>createNewPage</source>
+                <target>Vytvořit novou stránku</target>
+            </trans-unit>
+            <trans-unit id="content.manager">
+                <source>content.manager</source>
+                <target>Správce obsahu</target>
+            </trans-unit>
+            <trans-unit id="text.manager">
+                <source>text.manager</source>
+                <target>Správce textů</target>
+            </trans-unit>
+            <trans-unit id="list.of.pages">
+                <source>list.of.pages</source>
+                <target>Seznam stránek</target>
+            </trans-unit>
+            <trans-unit id="page.manager">
+                <source>page.manager</source>
+                <target>Správce stránek</target>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>title</source>
+                <target>Titulek</target>
+            </trans-unit>
+            <trans-unit id="page.create">
+                <source>page.create</source>
+                <target>Vytvořit stránku</target>
+            </trans-unit>
+            <trans-unit id="photo.manager">
+                <source>photo.manager</source>
+                <target>Správce fotografií</target>
+            </trans-unit>
+            <trans-unit id="event.calendar">
+                <source>event.calendar</source>
+                <target>Kalendář událostí</target>
+            </trans-unit>
+            <trans-unit id="contact.form">
+                <source>contact.form</source>
+                <target>Kontaktní formulář</target>
+            </trans-unit>
+            <trans-unit id="web.editation">
+                <source>web.editation</source>
+                <target>Úprava webové stránky</target>
             </trans-unit>
         </body>
     </file>

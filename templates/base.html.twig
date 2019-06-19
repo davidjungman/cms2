@@ -1,30 +1,13 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-            <!-- mdboostrap -->
-            <link href="{{ asset('node_modules/mdbootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-            <link href="{{ asset('node_modules/mdbootstrap/css/mdb.css') }}" rel="stylesheet">
-            <link href="{{ asset('node_modules/mdbootstrap/css/style.min.css') }}" rel="stylesheet">
-
-            <!-- font-awesome -->
-            <link href="{{ asset("node_modules/font-awesome/css/font-awesome.min.css") }}" rel="stylesheet">
-
-            <!-- custom -->
-            <link href="{{ asset("css/main.css") }}" rel="stylesheet">
-
-            <!-- fonts -->
-            <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-
-        <script src="{{ asset('node_modules/mdbootstrap/js/jquery-3.4.1.min.js') }}"></script>
-        <script src="{{ asset('node_modules/mdbootstrap/js/popper.min.js') }}"></script>
-        <script src="{{ asset('node_modules/mdbootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('node_modules/mdbootstrap/js/mdb.min.js') }}"></script>
-        {% block javascripts %}{% endblock %}
+<html lang="cs">
+    {% include "head.html.twig" %}
+    <body class="container pt-5 background-color min-vh-100">
+        {% include "content.html.twig" %}
+        <footer class="page-footer fixed-bottom font-small main-color">
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="https://www.execom.cz"> David Jungman | EXE-COM</a>
+        </div>
+    </footer>
+    {% include "scripts.html.twig" %}
     </body>
 </html>

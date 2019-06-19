@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <!-- mdboostrap -->
+    <link href="{{ asset('node_modules/mdbootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/mdbootstrap/css/mdb.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/mdbootstrap/css/style.min.css') }}" rel="stylesheet">
+
+    <!-- font-awesome -->
+    <link href="{{ asset("node_modules/font-awesome/css/font-awesome.min.css") }}" rel="stylesheet">
+
+    <!-- custom -->
+    <link href="{{ asset("css/frontend.css") }}" rel="stylesheet">
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <link href="{{ asset('node_modules/@coreui/icons/css/coreui-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
+
+    <!-- jquery ui -->
+    <link href="{{ asset('node_modules/jquery-ui-dist/jquery-ui.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/pace.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    </head>
+    <div class="container pt-5 mt-5">
+        <div class="row pt-5 mt-5 justify-content-center align-items-center">
+            <form method="post" class="card col-sm-12 col-lg-7 p-3">
+                <h3 class="text-center mb-3 mt-3">{{ 'sign_in'|trans }}</h3>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="_username">{{ 'Email.address'|trans }}</label>
+                    <input type="email" class="form-control" name="_username" id="_username" placeholder="email@hime.com">
+                </div>
+                <div class="form-group">
+                    <label for="_password">{{ 'Password'|trans }}</label>
+                    <input type="password" class="form-control" name="_password" id="_password">
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary col-lg-6">{{ 'sign_in'|trans }}</button>
+                    <div class="row pt-3 col pl-5">
+                        <div class="col">{{ 'Stay_logged_in'|trans }}</div>
+                        <div class="col">
+                            <label class="switch switch-pill switch-primary">
+                            <input type="checkbox" class="switch-input" name="_remember_me">
+                            <span class="switch-slider"></span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            </form>
+        </div>
+    </div>

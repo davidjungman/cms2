@@ -1,0 +1,21 @@
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#">
+        <i class="nav-icon cui-dashboard"></i>
+        {{ 'nav.page_manager'|trans }}
+    </a>
+
+    <ul class="nav-dropdown-items">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('page_index') }}">
+                <i class="nav-icon fa fa-list"></i>
+                {{ 'page_list'|trans }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('page_new') }}">
+                <i class="nav-icon fa fa-plus-circle"></i>
+                {{ 'new.page'|trans }}
+            </a>
+        </li>
+    </ul>
+</li>

@@ -34,7 +34,7 @@ class Breadcrumb
         $this->translator = $translator;
 
         $this->separator = "/";
-        $this->addItem("home", "landing_page");
+        $this->addItem("home", "landing_index");
         $this->addItem("admin", "dashboard_index");
     }
 

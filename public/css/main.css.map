@@ -1,1 +1,7 @@
-{"version":3,"sourceRoot":"","sources":["main.scss"],"names":[],"mappings":"AAWA;EAEE;;;AAEF;EAEE;;;AAGF;EAEE","file":"main.css"}
+{
+"version": 3,
+"mappings": "AAWA,SACA;EACE,MAAM,EAAC,OAAO;;AAEhB,eACA;EACE,UAAU,EAAE,kBAAqB;;AAGnC,CACA;EACE,WAAW,EAAC,oBAAoB;;AAGlC,UACA;EACE,eAAe,EAAC,eAAe;EAC/B,cAAc,EAAE,eAAe;;AAEjC,SACA;EACE,UAAU,EAAC,KAAK",
+"sources": ["main.scss"],
+"names": [],
+"file": "main.css"
+}
